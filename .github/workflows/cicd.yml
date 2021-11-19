@@ -1,0 +1,58 @@
+name: SBX CICD AWS Lambda Layer
+
+on:
+  push:
+    branches: [main]
+  workflow_dispatch:
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: "Checks-out GitHub Repository"
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: "Setup Python 3.8"
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
+
+      - name: "Install Python dependencies"
+        run: python -m pip install -U pip
+
+      - name: "Setup Node.js"
+        uses: actions/setup-node@v1
+        with:
+          node-version: "14.x"
+
+      - name: "Verify changed files"
+        uses: tj-actions/changed-files@v9
+        id: changed-files
+        # with:
+        #   files: |
+        #     [python]*
+
+      - name: "List all changed files and deploy"
+        run: |
+          layers=()
+          echo All modified files: "${{ steps.changed-files.outputs.all_modified_files }}"
+
+          for files in ${{ steps.changed-files.outputs.all_modified_files }}; do
+            layers+="${files%/*}"" "
+          done
+          echo Modified layers: "${layers}"
+
+          unique_layers=$(echo "${layers[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' ')
+          echo Layers that needed to be updated: "${unique_layers}"
+          echo "_______________"
+
+          for layer in $unique_layers; do
+            cd $layer
+            pip install -r requirements.txt -t artifact/python
+            sls deploy -s $ENVIRONMENT
+            cd ..
+          done
