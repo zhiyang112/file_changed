@@ -40,19 +40,3 @@ jobs:
         run: |
           layers=()
           echo All modified files: "${{ steps.changed-files.outputs.all_modified_files }}"
-
-          for files in ${{ steps.changed-files.outputs.all_modified_files }}; do
-            layers+="${files%/*}"" "
-          done
-          echo Modified layers: "${layers}"
-
-          unique_layers=$(echo "${layers[@]}" | tr ' ' '\n' | sort -u | tr '\n' ' ')
-          echo Layers that needed to be updated: "${unique_layers}"
-          echo "_______________"
-
-          for layer in $unique_layers; do
-            cd $layer
-            pip install -r requirements.txt -t artifact/python
-            sls deploy -s $ENVIRONMENT
-            cd ..
-          done
