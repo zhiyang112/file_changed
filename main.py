@@ -9,7 +9,7 @@ def hello(filename):
     #     print(filename)
     #     print(environment)
     #     sql = f.read().format(ENVIRONMENT=environment)
-    print("sql")
+    print(filename)
 
 
 if __name__ == "__main__":
