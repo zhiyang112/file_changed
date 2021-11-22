@@ -35,6 +35,9 @@ jobs:
           files=()
           echo All modified files: "${{ steps.changed-files.outputs.all_modified_files }}"
 
+          for file in ${{ steps.changed-files.outputs.all_modified_files }}; do
+            files+="${file}"" "
+
           for file in $files; do
             python main.py $file
           done
