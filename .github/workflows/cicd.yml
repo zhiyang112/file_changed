@@ -38,7 +38,7 @@ jobs:
 
       - name: "List all changed files and deploy"
         run: |
-          layers=()
+          files=()
           echo All modified files: "${{ steps.changed-files.outputs.all_modified_files }}"
 
           for file in ${{ steps.changed-files.outputs.all_modified_files }}; do
