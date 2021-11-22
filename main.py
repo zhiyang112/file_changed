@@ -1,18 +1,17 @@
+import argparse
 import os
-import sys
 
 environment = os.environ.get("ENVIRONMENT")
 
+parser = argparse.ArgumentParser()
+parser.add_argument("--filename", type=str)
+
+args = parser.parse_args()
+filename = args.filename
+
 
 def hello(filename):
-    with open(filename) as f:
-        print(filename)
-        print(environment)
-        sql = f.read().format(ENVIRONMENT=environment)
+    # with open(filename) as f:
+    # sql = f.read().format(ENVIRONMENT=environment)
+    # create view here
     print(filename)
-    print(environment)
-    print(sql)
-
-
-if __name__ == "__main__":
-    hello(str(sys.argv[1]))
