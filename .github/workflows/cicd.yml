@@ -8,6 +8,8 @@ on:
 jobs:
   build-and-deploy:
     runs-on: ubuntu-latest
+    env:
+      ENVIRONMENT: sandbox
 
     steps:
       - name: "Checks-out GitHub Repository"
@@ -21,14 +23,6 @@ jobs:
         with:
           python-version: 3.8
 
-      - name: "Install Python dependencies"
-        run: python -m pip install -U pip
-
-      - name: "Setup Node.js"
-        uses: actions/setup-node@v1
-        with:
-          node-version: "14.x"
-
       - name: "Verify changed files"
         uses: tj-actions/changed-files@v9
         id: changed-files
@@ -40,10 +34,6 @@ jobs:
         run: |
           files=()
           echo All modified files: "${{ steps.changed-files.outputs.all_modified_files }}"
-
-          for file in ${{ steps.changed-files.outputs.all_modified_files }}; do
-            files+="${file%.*}"" "
-          done
 
           for file in $files; do
             python main.py $file

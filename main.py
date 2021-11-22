@@ -1,8 +1,11 @@
+import os
 import sys
 
 
 def hello(a):
-    print(a)
+    with open(a) as f:
+        sql = f.read().format(env=os.environ.get("ENVIRONMENT"))
+        print(sql)
 
 
 if __name__ == "__main__":
