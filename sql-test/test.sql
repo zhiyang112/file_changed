@@ -1,1 +1,1 @@
-data-{ENVIRONMENT}-warehouse
+data-{ENVIRONMENT}-warehouse-

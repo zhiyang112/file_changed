@@ -40,5 +40,5 @@ jobs:
           done 
 
           for file in $files; do
-            python main.py $file
+            python main.py --filename=$file
           done
