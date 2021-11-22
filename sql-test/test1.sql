@@ -1,1 +1,1 @@
-data-{ENVIRONMENT}-base-
+data-{ENVIRONMENT}-base

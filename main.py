@@ -5,11 +5,13 @@ environment = os.environ.get("ENVIRONMENT")
 
 
 def hello(filename):
-    # with open(filename) as f:
-    #     print(filename)
-    #     print(environment)
-    #     sql = f.read().format(ENVIRONMENT=environment)
+    with open(filename) as f:
+        print(filename)
+        print(environment)
+        sql = f.read().format(ENVIRONMENT=environment)
     print(filename)
+    print(environment)
+    print(sql)
 
 
 if __name__ == "__main__":
