@@ -2,9 +2,9 @@ import os
 import sys
 
 
-def hello(a):
-    with open(a) as f:
-        sql = f.read().format(env=os.environ.get("ENVIRONMENT"))
+def hello(filename):
+    with open(filename) as f:
+        sql = f.read().format(ENVIRONMENT=os.environ.get("ENVIRONMENT"))
         print(sql)
 
 
