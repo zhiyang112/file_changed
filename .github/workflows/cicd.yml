@@ -32,9 +32,9 @@ jobs:
       - name: "Verify changed files"
         uses: tj-actions/changed-files@v9
         id: changed-files
-        # with:
-        #   files: |
-        #     [python]*
+        with:
+          files: |
+            [views-testing]*
 
       - name: "List all changed files and deploy"
         run: |
@@ -46,7 +46,7 @@ jobs:
           done
           echo Location Path: "${files}"
 
-          for layer in $unique_layers; do
+          for file in $files; do
             cd $files
             python main.py "Testing"
             cd ..
