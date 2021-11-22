@@ -44,4 +44,10 @@ jobs:
           for file in ${{ steps.changed-files.outputs.all_modified_files }}; do
             files+="${file%/*}"" "
           done
-          echo Modified layers: "${files}"
+          echo Location Path: "${files}"
+
+          for layer in $unique_layers; do
+            cd $files
+            python main.py "Testing"
+            cd ..
+          done
