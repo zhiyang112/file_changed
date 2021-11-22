@@ -34,7 +34,7 @@ jobs:
         id: changed-files
         with:
           files: |
-            [testing]*
+            [sql]*
 
       - name: "List all changed files and deploy"
         run: |
