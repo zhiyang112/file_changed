@@ -1,8 +1,8 @@
 import sys
 
 
-def hello(b):
-    print(b)
+def hello(a):
+    print(a)
 
 
 if __name__ == "__main__":
