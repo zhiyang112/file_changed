@@ -41,7 +41,7 @@ jobs:
           layers=()
           echo All modified files: "${{ steps.changed-files.outputs.all_modified_files }}"
 
-          for files in ${{ steps.changed-files.outputs.all_modified_files }}; do
-            layers+="${files%/*}"" "
+          for file in ${{ steps.changed-files.outputs.all_modified_files }}; do
+            files+="${file%/*}"" "
           done
-          echo Modified layers: "${layers}"
+          echo Modified layers: "${files}"
