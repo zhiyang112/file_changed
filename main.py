@@ -1,10 +1,14 @@
 import os
 import sys
 
+environment = os.environ.get("ENVIRONMENT")
+
 
 def hello(filename):
     with open(filename) as f:
-        sql = f.read().format(ENVIRONMENT=os.environ.get("ENVIRONMENT"))
+        print(filename)
+        print(environment)
+        sql = f.read().format(ENVIRONMENT=environment)
         print(sql)
 
 
