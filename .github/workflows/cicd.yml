@@ -34,20 +34,9 @@ jobs:
         id: changed-files
         with:
           files: |
-            [views-testing]*
+            [testing]*
 
       - name: "List all changed files and deploy"
         run: |
           files=()
           echo All modified files: "${{ steps.changed-files.outputs.all_modified_files }}"
-
-          for file in ${{ steps.changed-files.outputs.all_modified_files }}; do
-            files+="${file%/*}"" "
-          done
-          echo Location Path: "${files}"
-
-          for file in $files; do
-            cd $files
-            python main.py "Testing"
-            cd ..
-          done
