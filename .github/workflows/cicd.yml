@@ -28,7 +28,8 @@ jobs:
         id: changed-files
         with:
           files: |
-            [*sql]
+            sql-test
+            any-sql
 
       - name: "List all changed files and deploy"
         run: |
