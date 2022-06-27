@@ -30,4 +30,4 @@ SELECT  ja.company_id
         ,ja.updated_at
 FROM `data-{ENVIRONMENT}-warehouse.talent_acquisition.job_application` ja
 LEFT JOIN `data-{ENVIRONMENT}-warehouse.talent_acquisition.job` j
-ON ja.job_id = j.id ) ja
+ON ja.job_id = j.id ) jaa
