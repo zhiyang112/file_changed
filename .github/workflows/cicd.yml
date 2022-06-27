@@ -50,7 +50,7 @@ jobs:
               echo dataset=$dataset
               echo table=$table
               echo filename=$filename
-            else:
+            else
               echo "v"
             fi
             
