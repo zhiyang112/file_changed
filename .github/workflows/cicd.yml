@@ -28,8 +28,7 @@ jobs:
         id: changed-files
         with:
           files: |
-            sql-test
-            any-sql
+            mv
 
       - name: "List all changed files and deploy"
         run: |
@@ -40,4 +39,12 @@ jobs:
             echo $file
             declare -a array=($(echo $file | tr "$delimiter" " "))
             echo $array
+
+            type=${array[0]}
+            dataset=${array[1]}
+            table=${array[2]}
+            
+            echo $type
+            echo $dataset
+            echo $table
           done
