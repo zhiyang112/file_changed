@@ -24,7 +24,7 @@ jobs:
           python-version: 3.8
 
       - name: "Verify changed files"
-        uses: tj-actions/changed-files@v9
+        uses: tj-actions/changed-files@v23.1
         id: changed-files
         with:
           files: |
@@ -35,11 +35,3 @@ jobs:
         run: |
           files=()
           echo All modified files: "${{ steps.changed-files.outputs.all_modified_files }}"
-
-          for file in ${{ steps.changed-files.outputs.all_modified_files }}; do
-            files+="${file}"" "
-          done 
-
-          for file in $files; do
-            python main.py --filename=$file
-          done
