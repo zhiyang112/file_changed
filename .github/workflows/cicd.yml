@@ -29,6 +29,7 @@ jobs:
         with:
           files: |
             mv/*/*/build.sql
+            v/*/*/build.sql
 
       - name: "List all changed files and deploy"
         run: |
