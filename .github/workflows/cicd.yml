@@ -35,3 +35,9 @@ jobs:
         run: |
           files=()
           echo All modified files: "${{ steps.changed-files.outputs.all_modified_files }}"
+
+          for file in ${{ steps.changed-files.outputs.added_files }}; do
+            echo $file
+            declare -a array=($(echo $file | tr "$delimiter" " "))
+            echo $array
+          done
