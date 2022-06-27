@@ -42,9 +42,11 @@ jobs:
             type=${array[0]}
             dataset=${array[1]}
             table=${array[2]}
+            filename=${array[3]}
 
             echo type=$type
             echo dataset=$dataset
             echo table=$table
+            echo filename=$filename
             
           done
