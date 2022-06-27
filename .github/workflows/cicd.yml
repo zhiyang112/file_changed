@@ -45,13 +45,13 @@ jobs:
             table=${array[2]}
             filename=${array[3]}
 
-            if [[ $type== *"mv"* ]]; then
+            if [[ $type==mv ]]; then
               echo type=$type
               echo dataset=$dataset
               echo table=$table
               echo filename=$filename
             else
-              echo "v"
+              echo v
             fi
             
           done
