@@ -37,14 +37,14 @@ jobs:
 
           for file in ${{ steps.changed-files.outputs.all_modified_files }}; do
             echo $file
-            declare -a array=($(echo $file | tr "$delimiter" " "))
+            declare -a array=($(echo $file | tr "$delimiter" "/"))
             echo $array
 
             type=${array[0]}
             dataset=${array[1]}
             table=${array[2]}
             
-            echo $type
-            echo $dataset
-            echo $table
+            echo type = $type
+            echo dataset = $dataset
+            echo table = $table
           done
