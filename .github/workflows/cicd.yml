@@ -44,9 +44,30 @@ jobs:
             table=${array[2]}
             filename=${array[3]}
 
-            echo type=$type
-            echo dataset=$dataset
-            echo table=$table
-            echo filename=$filename
+            if $type=mv
+            then
+              echo type=$type
+              echo dataset=$dataset
+              echo table=$table
+              echo filename=$filename
+            fi
             
           done
+
+  build-and-deploy_2:
+    runs-on: ubuntu-latest
+    needs: build-and-deploy
+    env:
+      ENVIRONMENT: sandbox
+
+    steps:
+      - name: "Checks-out GitHub Repository"
+        uses: actions/checkout@v2
+        with:
+          ref: main
+          fetch-depth: 0
+
+      - name: "Setup Python 3.8"
+        uses: actions/setup-python@v2
+        with:
+          python-version: 3.8
