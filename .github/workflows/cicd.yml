@@ -44,5 +44,7 @@ jobs:
             table=${array[2]}
 
             echo type=$type
+            echo dataset=$dataset
+            echo table=$table
             
           done
